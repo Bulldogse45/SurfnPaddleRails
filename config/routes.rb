@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-   root 'welcome#index', :as => :welcome_page
+   root 'welcome#index'
 
    get '/posts/:id' => 'welcome#posts', :as => :posts
 

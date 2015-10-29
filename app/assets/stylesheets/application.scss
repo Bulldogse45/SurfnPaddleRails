@@ -123,23 +123,28 @@
  .product1{
    background-image: url("home.png");
    background-size: cover;
+   padding: 0;
  }
  .product2{
    background-image: url("boyfights.png");
    background-size: cover;
+   padding: 0;
  }
  .product3{
    background-image: url("cookout-boyfights.png");
    background-size: cover;
+   padding: 0;
  }
  .product4{
    background-image: url("backseat-boyfights.png");
    background-size: cover;
    padding:0;
+   padding: 0;
  }
  .overlay {
      background-color: rgba(111,161,204,.7);
      width:100%;
+
  }
  .overlay:hover{
      background-color: rgba(0, 0, 50, 0.0);
