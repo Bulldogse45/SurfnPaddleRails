@@ -16,9 +16,11 @@
  *{
    font-family: Helvetica;
  }
-
+ .logo_text{
+   color: white;
+ }
  .jumbotron{
-   background-image: url("Cornballs-1.jpg");
+   background-image: url(image_path("Cornballs-1.jpg"));
    background-size: cover;
    background-repeat: no-repeat;
    height:400px;
@@ -66,6 +68,10 @@
  .nav li a {
    color:#fff;
 
+ }
+
+ .post-image {
+  max-width: 90%;
  }
  p{
    font-family: Garamond,serif;
@@ -121,22 +127,22 @@
 
  }
  .product1{
-   background-image: url("home.png");
+   background-image: url(image_path("home.png"));
    background-size: cover;
    padding: 0;
  }
  .product2{
-   background-image: url("boyfights.png");
+   background-image: url(image_path("boyfights.png"));
    background-size: cover;
    padding: 0;
  }
  .product3{
-   background-image: url("cookout-boyfights.png");
+   background-image: url(image_path("cookout-boyfights.png"));
    background-size: cover;
    padding: 0;
  }
  .product4{
-   background-image: url("backseat-boyfights.png");
+   background-image: url(image_path("backseat-boyfights.png"));
    background-size: cover;
    padding:0;
    padding: 0;
