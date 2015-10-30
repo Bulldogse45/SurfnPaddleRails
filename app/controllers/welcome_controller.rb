@@ -4,6 +4,7 @@ class WelcomeController < ApplicationController
     @post_info = Post.find(first_post)
     @other_posts = Post.all - [@post_info]
     find_image
+    render "posts"
   end
   def posts
     @post_info = Post.find(params['id'].to_i)
