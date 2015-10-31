@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
    get '/about' => 'show#about', :as => :about
 
+   get '/search/find' => 'search#find', :as => :find
+
+   get '/search' => 'search#search', :as => :search
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

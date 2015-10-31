@@ -31,7 +31,12 @@
       <div class="col-md-3 col-sm-12">
         <ul class="nav nav-pills text-center">
           <li role="presentation"><%= link_to "ABOUT", about_path %></li>
-          <li role="presentation"><a href = "#">SEARCH <span class="glyphicon glyphicon-search white"></span></a></li>
+          <li role="presentation">
+            <%= link_to search_path do%>
+            SEARCH <span class="glyphicon glyphicon-search white"></span>
+          <% end %>
+          </li>
+
         </ul>
       </div>
     </div>
@@ -43,6 +48,24 @@
     </div>
   </div>
   <%= yield %>
+  <div class="container content-separator">
+    <div class="col-xs-12 text-center">
+      <h1>OTHER POPULAR POSTS!</h1>
+    </div>
+  </div>
+  <div class="container-fluid other-products">
+    <% i=1 %>
+    <% Post.all.sort_by{|p| p.created_at.to_f}.reverse.take(4).each do |p| %>
+      <%= link_to posts_path(:id => p.id) do%>
+        <div class="col-lg-3 col-md-3 col-sm-12  product<%= i %>">
+          <div class="col-lg-3 col-md-3 col-sm-12  overlay">
+            <h1><%= p.title %></h1>
+          </div>
+        </div>
+      <% end %>
+      <% i+=1 %>
+    <% end %>
+  </div>
   <footer class="container-fluid">
     <div class="col-xs-1"></div>
     <%= link_to about_path do %>
