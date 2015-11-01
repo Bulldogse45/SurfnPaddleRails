@@ -66,6 +66,7 @@
    width:25%;
    height:auto;
    border-radius: 100%;
+   margin-top: 25px;
 
  }
  .social-profile a{
@@ -138,22 +139,22 @@
 
  }
  .product1{
-   background-image: url(image_path("home.png"));
+   background-image: url(image_path("space_image1.jpg"));
    background-size: cover;
    padding: 0;
  }
  .product2{
-   background-image: url(image_path("boyfights.png"));
+   background-image: url(image_path("space_image2.jpg"));
    background-size: cover;
    padding: 0;
  }
  .product3{
-   background-image: url(image_path("cookout-boyfights.png"));
+   background-image: url(image_path("space_image3.jpg"));
    background-size: cover;
    padding: 0;
  }
  .product4{
-   background-image: url(image_path("backseat-boyfights.png"));
+   background-image: url(image_path("space_image4.jpg"));
    background-size: cover;
    padding:0;
    padding: 0;
@@ -168,7 +169,7 @@
      color:#fff;
  }
  footer{
-   background-color: #415A92;
+   background-color: #000;
  }
  .footer-logo img{
    height: 50px;
