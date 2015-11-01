@@ -19,10 +19,11 @@ class SearchController < ApplicationController
         end
       end
     end
+    @other_posts = Post.all
     @results.uniq!
   end
 
   def search
-
+    @other_posts = Post.all
   end
 end

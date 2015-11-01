@@ -1,5 +1,11 @@
 <div class="container">
-  <div class="col-xs-4 col-xs-offset-3">
+  <div class="col-xs-offset-4">
+    <%= form_tag("/search/find", method: "get") do %>
+      <%= text_field_tag(:q) %>
+      <%= submit_tag("Search Again") %>
+    <% end %>
+  </div>
+  <div class="col-xs-4 col-xs-offset-1">
     <h4> Your results for <%= @terms.each{|t| t} %> returned :</h4>
     <% @results.each do |r| %>
       <p><%= link_to r.title, posts_path(id:r.id) %></p>

@@ -61,7 +61,7 @@
   </div>
   <div class="container-fluid other-products">
     <% i=1 %>
-    <% Post.all.reject{|r| r.id == @post_info.id}.sort_by{|p| p.created_at.to_f}.reverse.take(4).each do |p| %>
+    <% @other_posts.sort_by{|p| p.created_at.to_f}.reverse.take(4).each do |p| %>
       <%= link_to posts_path(:id => p.id) do%>
         <div class="col-lg-3 col-md-3 col-sm-12  product<%= i %>">
           <div class="col-lg-3 col-md-3 col-sm-12  overlay">
