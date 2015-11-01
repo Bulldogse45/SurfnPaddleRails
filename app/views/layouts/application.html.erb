@@ -13,44 +13,50 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <div class="jumbotron">
-    <div class="row">
-      <div class="col-xs-1 logo hidden-xs hidden-sm"></div>
-      <div class ="col-xs-3 logo hidden-xs hidden-sm">
-        <%= link_to root_path do %>
-        <div class="col-xs-5">
-          <%= image_tag "cornballer-logo.png", :class => "img-responsive" %>
-        </div>
-        <div class="col-xs-7">
-          <h6 class="text-left logo_text">A Bluth Product</h6>
-        </div>
-        <% end %>
-      </div>
-      <div class="col-xs-5 logo hidden-xs"></div>
-      <div class="col-md-3 col-sm-12">
-        <ul class="nav nav-pills text-center">
-          <li role="presentation"><%= link_to "ABOUT", about_path %></li>
-          <li role="presentation">
-            <%= link_to search_path do%>
-            SEARCH <span class="glyphicon glyphicon-search white"></span>
+    <div class="jumbo-overlay">
+      <div class="row">
+        <div class="col-xs-1 logo hidden-xs hidden-sm"></div>
+        <div class ="col-xs-3 logo hidden-xs hidden-sm">
+          <%= link_to root_path do %>
+          <div class="col-xs-5">
+            <%= image_tag "Telescope.jpg", :class => "img-responsive" %>
+          </div>
+          <div class="col-xs-7">
+            <h6 class="text-left logo_text">Telescope</h6>
+          </div>
           <% end %>
-          </li>
-
+        </div>
+        <div class="col-xs-5 logo hidden-xs"></div>
+        <div class="col-md-3 col-sm-12">
+          <ul class="nav nav-pills text-center">
+            <li role="presentation"><%= link_to "ABOUT", about_path %></li>
+            <li role="presentation">
+              <%= link_to search_path do%>
+              SEARCH <span class="glyphicon glyphicon-search white"></span>
+            <% end %>
+            </li>
+          </div>
         </ul>
       </div>
-    </div>
-    <div class="hidden-lg hidden-md col-12-xs">
-      <%= image_tag "cornballer-logo.png", :class => "img-responsive center-block" %>
-    </div>
-    <div class ="row">
-      <h1 class = "col-xs-12 text-center band-name">The Cornballer</h1>
+      <div class="hidden-lg hidden-md col-12-xs">
+        <%= image_tag "Telescope.jpg", :class => "img-responsive center-block main-logo" %>
+      </div>
+      <div class ="row">
+        <h1 class = "col-xs-12 text-center band-name">Stardate Log</h1>
+      </div>
     </div>
   </div>
   <%= yield %>
   <div class="container content-separator">
     <div class="col-xs-12 text-center">
-      <h1>OTHER POPULAR POSTS!</h1>
+      <h1>
+        <% if @post_info != nil %>
+          <%= "OTHER POPULAR POSTS!" %>
+        <% else %>
+          <%= "RECENT POSTS!" %>
+        <% end %>
+      </h1>
     </div>
   </div>
   <div class="container-fluid other-products">
@@ -59,7 +65,7 @@
       <%= link_to posts_path(:id => p.id) do%>
         <div class="col-lg-3 col-md-3 col-sm-12  product<%= i %>">
           <div class="col-lg-3 col-md-3 col-sm-12  overlay">
-            <h1><%= p.title %></h1>
+            <h3><%= p.title %></h3>
           </div>
         </div>
       <% end %>

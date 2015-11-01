@@ -1,6 +1,8 @@
-<div>
-  <h4> Your results for <%= @terms %> returned :</h4>
-  <% @results.each do |r| %>
-    <p><%= link_to r.title, posts_path(id:r.id) %></p>
-  <% end %>
+<div class="container">
+  <div class="col-xs-4 col-xs-offset-3">
+    <h4> Your results for <%= @terms.each{|t| t} %> returned :</h4>
+    <% @results.each do |r| %>
+      <p><%= link_to r.title, posts_path(id:r.id) %></p>
+    <% end %>
+  </div>
 </div>
