@@ -1,7 +1,7 @@
 class ShowController < ApplicationController
 
   def about
-    @other_posts = Posts.all
+    @other_posts = Post.all
   end
 
 end
