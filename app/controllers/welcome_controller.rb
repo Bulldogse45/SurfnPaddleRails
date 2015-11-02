@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    first_post = Post.all.min{|p| p.created_at.to_f}.id
+    first_post = Post.all.max{|p| p.created_at.to_f}.id
     @post_info = Post.find(first_post)
     @other_posts = Post.all - [@post_info]
     render "posts"
