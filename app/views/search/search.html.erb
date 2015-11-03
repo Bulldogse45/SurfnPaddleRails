@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="col-xs-offset-4">
+    <%= form_tag("/search/find", method: "get") do %>
+      <%= text_field_tag(:q) %>
+      <%= submit_tag("Search Posts") %>
+    <% end %>
+  </div>
+</div>
