@@ -2,6 +2,10 @@ class Post < ActiveRecord::Base
 
   belongs_to :author
 
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :author, presence: true
+
 
   def post_image
     case self.id

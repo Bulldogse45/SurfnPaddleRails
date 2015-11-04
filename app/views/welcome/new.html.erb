@@ -1,0 +1,19 @@
+<% if params[:action] == "new" || params[:action] == "create" %>
+  <h1 class="text-center">New post</h1>
+<% else %>
+  <h1 class="text-center">Edit post</h1>
+<% end %>
+
+<%= form_for @post, html: {class: "form-horizontal"} do |f| %>
+  <div class="row">
+    <%= f.label :title, class: "col-xs-2 col-xs-offset-1" %>
+    <%= f.text_field :title, class: "col-xs-2" %>
+  </div>
+  <div class="row">
+  <%= f.label :body, class: "col-xs-2 col-xs-offset-1" %>
+  <%= f.text_area :body, class: "col-xs-8", size:"3x15" %>
+  </div>
+  <div class="row">
+  <%= f.submit "Save", class: "center-block" %>
+  </div>
+<% end %>
