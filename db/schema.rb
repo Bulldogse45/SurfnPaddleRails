@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20151104003952) do
 
-# Could not dump table "authors" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
-
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
