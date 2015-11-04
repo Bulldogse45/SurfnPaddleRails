@@ -1882,3 +1882,176 @@ Started GET "/assets/space_image3-4600395914e38df1b1c3e42c051b2f6373394e9067effa
   [1m[35m (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151103222239')
   [1m[36m (1.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151103224159')[0m
   [1m[35m (2.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151104003531')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mPost Load (1.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors"
+SQLite3::SQLException: no such table: authors: SELECT "authors".* FROM "authors"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1[0m
+  [1m[35mAuthor Load (0.5ms)[0m  SELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" ASC LIMIT 1
+SQLite3::SQLException: no such table: authors: SELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" ASC LIMIT 1
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mAuthor Load (0.6ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+SQLite3::SQLException: no such table: authors: SELECT "authors".* FROM "authors"
+  [1m[36m (1.0ms)[0m  [1mDROP TABLE "posts"[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "summary" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "author_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.9ms)[0m  DROP TABLE "posts"
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "summary" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "author_id" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1
+  [1m[36mAuthor Load (0.5ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+SQLite3::SQLException: no such table: authors: SELECT "authors".* FROM "authors"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mAuthor Load (0.5ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+SQLite3::SQLException: no such table: authors: SELECT "authors".* FROM "authors"
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" ASC LIMIT 1
+SQLite3::SQLException: no such table: authors: SELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" ASC LIMIT 1
+  [1m[36m (2.8ms)[0m  [1mDROP TABLE "posts"[0m
+  [1m[35m (1.7ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "summary" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "author_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.9ms)[0m  DROP TABLE "posts"
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "summary" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "author_id" integer) [0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mAuthor Load (0.6ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+SQLite3::SQLException: no such table: authors: SELECT "authors".* FROM "authors"
+  [1m[36m (2.1ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "summary" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "author_id" integer) [0m
+  [1m[35m (1.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151104003952')
+  [1m[36m (1.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151103195828')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151103222239')
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151103224159')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151104003531')
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "summary" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "author_id" integer) [0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151104003952')
+  [1m[36m (2.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151103195828')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151103222239')
+  [1m[36m (1.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151103224159')[0m
+  [1m[35m (1.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151104003531')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreatePosts (20151103195828)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "summary" varchar, "author" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151103195828"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateAuthors (20151103222239)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "authors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "bio" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151103222239"]]
+  [1m[35m (1.6ms)[0m  commit transaction
+Migrating to AddPostsToAuthor (20151103224159)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "authors" ADD "post" array
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151103224159"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+Migrating to AddAuthorIdToPosts (20151104003531)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "posts" ADD "author_id" integer
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104003531"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to RemoveAuthorFromPosts (20151104003952)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TEMPORARY TABLE "aposts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "summary" varchar, "author" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "author_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "posts"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "posts"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "summary" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "author_id" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "aposts"
+  [1m[36m (0.4ms)[0m  [1mDROP TABLE "aposts"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151104003952"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mAuthor Load (1.1ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "author_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "The Apes and The Two Travelers"], ["author_id", 1], ["body", "Two men were travelling together, one of whom never spoke the truth, whereas the other never told a lie: and they came in the course of their travels to the land of Apes.\n\n            The King of the Apes, hearing of their arrival, ordered them to be brought before him; and by way of impressing them with his magnificence, he received them sitting on a throne, while the Apes, his subjects, were ranged in long rows on either side of him.\n\n            When the Travellers came into his presence he asked them what they thought of him as a King.\n\n            The lying Traveller said, \"Sire, every one must see that you are a most noble and mighty monarch.\"\n\n            \"And what do you think of my subjects?\" continued the King.\n\n            \"They,\" said the Traveller, \"are in every way worthy of their royal master.\"\n\n            The Ape was so delighted with his answer that he gave him a very handsome present.\n\n            The other Traveller thought that if his companion was rewarded so splendidly for telling a lie, he himself would certainly receive a still greater reward for telling the truth; so, when the Ape turned to him and said, \"And what, sir, is your opinion?\" he replied, \"I think you are a very fine Ape, and all your subjects are fine Apes too.\"\n\n            The King of the Apes was so enraged at his reply that he ordered him to be taken away and clawed to death."], ["created_at", "2015-11-04 04:45:52.647503"], ["updated_at", "2015-11-04 04:45:52.647503"]]
+  [1m[35m (2.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("title", "author_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Plymouth Rock and the Pilgrims"], ["author_id", 2], ["body", "I rise to protest. I have kept still for years; but really I think there is no sufficient justification for this sort of thing. What do you want to celebrate those people for? - those ancestors of yours of 1620 - the Mayflower tribe, I mean. What do you want to celebrate them for? Your pardon: the gentleman at my left assures me that you are not celebrating the Pilgrims themselves, but the landing of the Pilgrims at Plymouth rock on the 22d of December. So you are celebrating their landing. Why, the other pretext was thin enough, but this is thinner than ever; the other was tissue, tinfoil, fish-bladder, but this is gold-leaf.  Celebrating their lauding! What was there remarkable about it, I would like to know? What can you be thinking of? Why, those Pilgrims had been at sea three or four months. It was the very middle of winter: it was as cold as death off Cape Cod there. Why shouldnt they come ashore? If they hadnt landed there would be some reason for celebrating the fact: It would have been a case of monumental leatherheadedness which the world would not willingly let die. If it had been you, gentlemen, you probably wouldnt have landed, but you have no shadow of right to be celebrating, in your ancestors, gifts which they did not exercise, but only transmitted. Why, to be celebrating the mere landing of the Pilgrims - to be trying to make out that this most natural and simple and customary procedure was an extraordinary circumstance - a circumstance to be amazed at, and admired, aggrandized and glorified, at orgies like this for two hundred and sixty years - hang it, a horse would have known enough to land; a horse - Pardon again; the gentleman on my right assures me that it was not merely the landing of the Pilgrims that we are celebrating, but the Pilgrims themselves. So we have struck an inconsistency here - one says it was the landing, the other says it was the Pilgrims. It is an inconsistency characteristic of your intractable and disputatious tribe, for you never agree about anything but Boston.  Well, then, what do you want to celebrate those Pilgrims for? They were a mighty hard lot - you know it. I grant you, without the slightest unwillingness, that they were a deal more gentle and merciful and just than were the people of Europe of that day; I grant you that they are better than their predecessors. But what of that? - that is nothing.  People always progress. You are better than your fathers and grandfathers were (this is the first time I have ever aimed a measureless slander at the departed, for I consider such things improper). Yes, those among you who have not been in the penitentiary, if such there be, are better than your fathers and grandfathers were; but is that any sufficient reason for getting up annual dinners and celebrating you? No, by no means - by no means. Well, I repeat, those Pilgrims were a hard lot. They took good care of themselves, but they abolished everybody elses ancestors. I am a border-ruffian from the State of Missouri. I am a Connecticut Yankee by adoption. In me, you have Missouri morals, Connecticut culture; this, gentlemen, is the combination which makes the perfect man. But where are my ancestors?  Whom shall I celebrate? Where shall I find the raw material?\n\n            My first American ancestor, gentlemen, was an Indian - an early Indian.  Your ancestors skinned him alive, and I am an orphan. Not one drop of my blood flows in that Indians veins today. I stand here, lone and forlorn, without an ancestor. They skinned him! I do not object to that, if they needed his fur; but alive, gentlemen-alive! They skinned him alive - and before company! That is what rankles. Think how he must have felt; for he was a sensitive person and easily embarrassed. If he had been a bird, it would have been all right, and no violence done to his feelings, because he would have been considered \"dressed.\" But he was not a bird, gentlemen, he was a man, and probably one of the most undressed men that ever was. I ask you to put yourselves in his place.  I ask it as a favor; I ask it as a tardy act of justice; I ask it in the interest of fidelity to the traditions of your ancestors; I ask it that the world may contemplate, with vision unobstructed by disguising swallow-tails and white cravats, the spectacle which the true New England Society ought to present. Cease to come to these annual orgies in this hollow modern mockery - the surplusage of raiment. Come in character; come in the summer grace, come in the unadorned simplicity, come in the free and joyous costume which your sainted ancestors provided for mine.\n\n            Later ancestors of mine were the Quakers William Robinson, Marmaduke Stevenson, et al. Your tribe chased them out of the country for their religions sake; promised them death if they came back; for your ancestors had forsaken the homes they loved, and braved the perils of the sea, the implacable climate, and the savage wilderness, to acquire that highest and most precious of boons, freedom for every man on this broad continent to worship according to the dictates of his own conscience - and they were not going to allow a lot of pestiferous Quakers to interfere with it. Your ancestors broke forever the chains of political slavery, and gave the vote to every man in this wide land, excluding none! - none except those who did not belong to the orthodox church. Your ancestors - yes, they were a hard lot; but, nevertheless, they gave us religious liberty to worship as they required us to worship, and political liberty to vote as the church required; and so I the bereft one, I the forlorn one, am here to do my best to help you celebrate them right.\n\n            The Quaker woman Elizabeth Hooton was an ancestress of mine. Your people were pretty severe with her you will confess that. But, poor thing! I believe they changed her opinions before she died, and took her into their fold; and so we have every reason to presume that when she died she went to the same place which your ancestors went to. It is a great pity, for she was a good woman. Roger Williams was an ancestor of mine.  I dont really remember what your people did with him. But they banished him to Rhode Island, anyway. And then, I believe, recognizing that this was really carrying harshness to an unjustifiable extreme, they took pity on him and burned him. They were a hard lot! All those Salem witches were ancestors of mine! Your people made it tropical for them.  Yes, they did; by pressure and the gallows they made such a clean deal with them that there hasnt been a witch and hardly a halter in our family from that day to this, and that is one hundred and eighty-nine years. The first slave brought into New England out of Africa by your progenitors was an ancestor of mine - for I am of a mixed breed, an infinitely shaded and exquisite Mongrel. Im not one of your sham meerschaums that you can color in a week. No, my complexion is the patient art of eight generations. Well, in my own time, I had acquired a lot of my kin - by purchase, and swapping around, and one way and another - and was getting along very well. Then, with the inborn perversity of your lineage, you got up a war, and took them all away from me. And so, again am I bereft, again am I forlorn; no drop of my blood flows in the veins of any living being who is marketable.\n\n            O my friends, hear me and reform! I seek your good, not mine. You have heard the speeches. Disband these New England societies - nurseries of a system of steadily augmenting laudation and hosannaing, which; if persisted in uncurbed, may some day in the remote future beguile you into prevaricating and bragging. Oh, stop, stop, while you are still temperate in your appreciation of your ancestors! Hear me, I beseech you; get up an auction and sell Plymouth Rock! The Pilgrims were a simple and ignorant race. They never had seen any good rocks before, or at least any that were not watched, and so they were excusable for hopping ashore in frantic delight and clapping an iron fence around this one. But you, gentlemen, are educated; you are enlightened; you know that in the rich land of your nativity, opulent New England, overflowing with rocks, this one isnt worth, at the outside, more than thirty-five cents. Therefore, sell it, before it is injured by exposure, or at least throw it open to the patent-medicine advertisements, and let it earn its taxes:\n\n            Yes, hear your true friend-your only true friend - list to his voice.  Disband these societies, hotbeds of vice, of moral decay - perpetuators of ancestral superstition. Here on this board I see water, I see milk, I see the wild and deadly lemonade. These are but steps upon the downward path. Next we shall see tea, then chocolate, then coffee - hotel coffee.  A few more years - all too few, I fear - mark my words, we shall have cider!  Gentlemen, pause ere it be too late. You are on the broad road which leads to dissipation, physical ruin, moral decay, gory crime and the gallows! I beseech you, I implore you, in the name of your anxious friends, in the name of your suffering families, in the name of your impending widows and orphans, stop ere it be too late. Disband these New England societies, renounce these soul-blistering saturnalia, cease from varnishing the rusty reputations of your long-vanished ancestors - the super-high-moral old iron-clads of Cape Cod, the pious buccaneers of Plymouth Rock - go home, and try to learn to behave!\n\n            However, chaff and nonsense aside, I think I honor and appreciate your Pilgrim stock as much as you do yourselves, perhaps; and I endorse and adopt a sentiment uttered by a grandfather of mine once - a man of sturdy opinions, of sincere make of mind, and not given to flattery. He said: \"People may talk as they like about that Pilgrim stock, but, after alls said and done, it would be pretty hard to improve on those people; and, as for me, I dont mind coming out flatfooted and saying there aint any way to improve on them - except having them born in, Missouri!\""], ["created_at", "2015-11-04 04:54:27.007774"], ["updated_at", "2015-11-04 04:54:27.007774"]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "posts" ("title", "author_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "The Lady in Pink"], ["author_id", 3], ["body", "Two men were travelling together, one of whom never spoke the truth, whereas the other never told a lie: and they came in the course of their travels to the land of Apes.\n\n            The King of the Apes, hearing of their arrival, ordered them to be brought before him; and by way of impressing them with his magnificence, he received them sitting on a throne, while the Apes, his subjects, were ranged in long rows on either side of him.\n\n            When the Travellers came into his presence he asked them what they thought of him as a King.\n\n            The lying Traveller said, \"Sire, every one must see that you are a most noble and mighty monarch.\"\n\n            \"And what do you think of my subjects?\" continued the King.\n\n            \"They,\" said the Traveller, \"are in every way worthy of their royal master.\"\n\n            The Ape was so delighted with his answer that he gave him a very handsome present.\n\n            The other Traveller thought that if his companion was rewarded so splendidly for telling a lie, he himself would certainly receive a still greater reward for telling the truth; so, when the Ape turned to him and said, \"And what, sir, is your opinion?\" he replied, \"I think you are a very fine Ape, and all your subjects are fine Apes too.\"\n\n            The King of the Apes was so enraged at his reply that he ordered him to be taken away and clawed to death."], ["created_at", "2015-11-04 04:57:21.527251"], ["updated_at", "2015-11-04 04:57:21.527251"]]
+  [1m[35m (4.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("author_id", "title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["author_id", 4], ["title", "Consider the Lobster"], ["body", "Two men were travelling together, one of whom never spoke the truth, whereas the other never told a lie: and they came in the course of their travels to the land of Apes.\n\n            The King of the Apes, hearing of their arrival, ordered them to be brought before him; and by way of impressing them with his magnificence, he received them sitting on a throne, while the Apes, his subjects, were ranged in long rows on either side of him.\n\n            When the Travellers came into his presence he asked them what they thought of him as a King.\n\n            The lying Traveller said, \"Sire, every one must see that you are a most noble and mighty monarch.\"\n\n            \"And what do you think of my subjects?\" continued the King.\n\n            \"They,\" said the Traveller, \"are in every way worthy of their royal master.\"\n\n            The Ape was so delighted with his answer that he gave him a very handsome present.\n\n            The other Traveller thought that if his companion was rewarded so splendidly for telling a lie, he himself would certainly receive a still greater reward for telling the truth; so, when the Ape turned to him and said, \"And what, sir, is your opinion?\" he replied, \"I think you are a very fine Ape, and all your subjects are fine Apes too.\"\n\n            The King of the Apes was so enraged at his reply that he ordered him to be taken away and clawed to death."], ["created_at", "2015-11-04 04:58:09.920435"], ["updated_at", "2015-11-04 04:58:09.920435"]]
+  [1m[36m (2.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "posts" ("author_id", "title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["author_id", 5], ["title", "Dr. Strangelove (or, how I learned to stop worrying and love the bomb)"], ["body", "Two men were travelling together, one of whom never spoke the truth, whereas the other never told a lie: and they came in the course of their travels to the land of Apes.\n\n            The King of the Apes, hearing of their arrival, ordered them to be brought before him; and by way of impressing them with his magnificence, he received them sitting on a throne, while the Apes, his subjects, were ranged in long rows on either side of him.\n\n            When the Travellers came into his presence he asked them what they thought of him as a King.\n\n            The lying Traveller said, \"Sire, every one must see that you are a most noble and mighty monarch.\"\n\n            \"And what do you think of my subjects?\" continued the King.\n\n            \"They,\" said the Traveller, \"are in every way worthy of their royal master.\"\n\n            The Ape was so delighted with his answer that he gave him a very handsome present.\n\n            The other Traveller thought that if his companion was rewarded so splendidly for telling a lie, he himself would certainly receive a still greater reward for telling the truth; so, when the Ape turned to him and said, \"And what, sir, is your opinion?\" he replied, \"I think you are a very fine Ape, and all your subjects are fine Apes too.\"\n\n            The King of the Apes was so enraged at his reply that he ordered him to be taken away and clawed to death."], ["created_at", "2015-11-04 04:58:51.060849"], ["updated_at", "2015-11-04 04:58:51.060849"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("author_id", "title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["author_id", 6], ["title", "This is a Random Post about Zombie Kittens"], ["body", "GUARD THE GOURDS Although fall decorations such as pumpkins, hay and corn aren’t toxic per se, they can cause tummy upset and intestinal blockage if consumed. So, keep decorations away from curious canines and cats.\n\n          WATCH FOR WIRES Lights and moving lawn figures sure make for a spooky scene, but exposed electrical wires are a definite hazard to our four-legged friends. Chewing on wires can cause burns and even electrical shock, so make sure any wires are kept out of reach!\n\n          LOSE THE LANTERNS We’re all for Jack-O-Lanterns, but using real candles to light those ghoulish grins isn’t just a fire hazard. Playful pets who knock over flickering flames could easily get burned. Try battery powered candles instead!"], ["created_at", "2015-11-04 04:59:40.262935"], ["updated_at", "2015-11-04 04:59:40.262935"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "authors" ("name", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Aesop"], ["bio", "This is a blurb about Aesop."], ["created_at", "2015-11-04 05:00:59.865703"], ["updated_at", "2015-11-04 05:00:59.865703"]]
+  [1m[35m (3.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "authors" ("name", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Mark Twain"], ["bio", "This is a blurb about Mark Twain."], ["created_at", "2015-11-04 05:01:28.603042"], ["updated_at", "2015-11-04 05:01:28.603042"]]
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO "authors" ("name", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Sir Arthur Conan Doyle"], ["bio", "This is a blurb about Sir Arthur Conan Doyle."], ["created_at", "2015-11-04 05:02:13.792809"], ["updated_at", "2015-11-04 05:02:13.792809"]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "authors" ("name", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "David Foster Wallace"], ["bio", "This is a blurb about David Foster Wallace."], ["created_at", "2015-11-04 05:02:52.684296"], ["updated_at", "2015-11-04 05:02:52.684296"]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "authors" ("name", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Stanley Kubrick"], ["bio", "This is a blurb about Stanley Kubrick."], ["created_at", "2015-11-04 05:03:24.554417"], ["updated_at", "2015-11-04 05:03:24.554417"]]
+  [1m[35m (6.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "authors" ("name", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Matthew Fair"], ["bio", "This is a blurb about Matthew Fair."], ["created_at", "2015-11-04 05:04:09.477625"], ["updated_at", "2015-11-04 05:04:09.477625"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for ::1 at 2015-11-04 00:05:13 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered welcome/posts.html.erb within layouts/application (156.9ms)
+Completed 200 OK in 777ms (Views: 727.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/posts/4" for ::1 at 2015-11-04 00:05:17 -0500
+Processing by WelcomeController#posts as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered welcome/posts.html.erb within layouts/application (35.2ms)
+Completed 200 OK in 137ms (Views: 134.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/3" for ::1 at 2015-11-04 00:05:21 -0500
+Processing by WelcomeController#posts as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered welcome/posts.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 135ms (Views: 133.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/2" for ::1 at 2015-11-04 00:05:24 -0500
+Processing by WelcomeController#posts as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered welcome/posts.html.erb within layouts/application (25.9ms)
+Completed 200 OK in 139ms (Views: 137.1ms | ActiveRecord: 0.3ms)
