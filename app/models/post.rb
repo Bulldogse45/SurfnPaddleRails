@@ -1,12 +1,15 @@
 class Post < ActiveRecord::Base
+
+  belongs_to :author
+
   def auth_image
-    case self.author
+    case self.author.name
     when "Aesop"
       image = "aesop.jpg"
     when "Sir Arthur Conan Doyle"
       image = "doyle.jpg"
     when "Stanley Kubrick"
-      image = "kubrik.jpg"
+      image = "kubrick.jpg"
     when "David Foster Wallace"
       image = "wallace.jpg"
     when "Mark Twain"

@@ -455,3 +455,873 @@ Migrating to CreateAuthors (20151103222239)
   [1m[36mAuthor Load (0.3ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
   [1m[35mAuthor Load (0.2ms)[0m  SELECT "authors".* FROM "authors"
   [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddPostsToAuthor (20151103224159)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "authors" ADD "post" array[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151103224159"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" ASC LIMIT 1[0m
+  [1m[35mAuthor Load (0.3ms)[0m  SELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" ASC LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mAuthor Load (0.3ms)[0m  SELECT "authors".* FROM "authors"
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" ASC LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1[0m
+  [1m[35mAuthor Load (0.6ms)[0m  SELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" ASC LIMIT 1
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: posts.author_id: SELECT "posts".* FROM "posts" WHERE "posts"."author_id" = ?
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" ASC LIMIT 1
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" ASC LIMIT 1[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1
+  [1m[36mAuthor Load (0.3ms)[0m  [1mSELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" ASC LIMIT 1[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."author_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: posts.author_id: SELECT "posts".* FROM "posts" WHERE "posts"."author_id" = ?
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAuthorIdToPosts (20151104003531)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "posts" ADD "author_id" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151104003531"]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" ASC LIMIT 1[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveAuthorFromPosts (20151104003804)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104003804"]]
+  [1m[35m (1.6ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveAuthorFromPosts (20151104003952)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mCREATE TEMPORARY TABLE "aposts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "summary" varchar, "author" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "author_id" integer) [0m
+  [1m[35m (0.3ms)[0m  SELECT * FROM "posts"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aposts" ("id","title","body","summary","author","created_at","updated_at","author_id") VALUES (1, 'The Apes and The Two Travelers', 'Two men were travelling together, one of whom never spoke the truth, whereas the other never told a lie: and they came in the course of their travels to the land of Apes.
+
+            The King of the Apes, hearing of their arrival, ordered them to be brought before him; and by way of impressing them with his magnificence, he received them sitting on a throne, while the Apes, his subjects, were ranged in long rows on either side of him.
+
+            When the Travellers came into his presence he asked them what they thought of him as a King.
+
+            The lying Traveller said, "Sire, every one must see that you are a most noble and mighty monarch."
+
+            "And what do you think of my subjects?" continued the King.
+
+            "They," said the Traveller, "are in every way worthy of their royal master."
+
+            The Ape was so delighted with his answer that he gave him a very handsome present.
+
+            The other Traveller thought that if his companion was rewarded so splendidly for telling a lie, he himself would certainly receive a still greater reward for telling the truth; so, when the Ape turned to him and said, "And what, sir, is your opinion?" he replied, "I think you are a very fine Ape, and all your subjects are fine Apes too."
+
+            The King of the Apes was so enraged at his reply that he ordered him to be taken away and clawed to death.', NULL, 'Aesop', '2015-11-03 20:15:39.095283', '2015-11-03 20:15:39.095283', NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aposts" ("id","title","body","summary","author","created_at","updated_at","author_id") VALUES (2, 'Plymouth Rock and the Pilgrims', 'I rise to protest. I have kept still for years; but really I think there is no sufficient justification for this sort of thing. What do you want to celebrate those people for? - those ancestors of yours of 1620 - the Mayflower tribe, I mean. What do you want to celebrate them for? Your pardon: the gentleman at my left assures me that you are not celebrating the Pilgrims themselves, but the landing of the Pilgrims at Plymouth rock on the 22d of December. So you are celebrating their landing. Why, the other pretext was thin enough, but this is thinner than ever; the other was tissue, tinfoil, fish-bladder, but this is gold-leaf.  Celebrating their lauding! What was there remarkable about it, I would like to know? What can you be thinking of? Why, those Pilgrims had been at sea three or four months. It was the very middle of winter: it was as cold as death off Cape Cod there. Why shouldnt they come ashore? If they hadnt landed there would be some reason for celebrating the fact: It would have been a case of monumental leatherheadedness which the world would not willingly let die. If it had been you, gentlemen, you probably wouldnt have landed, but you have no shadow of right to be celebrating, in your ancestors, gifts which they did not exercise, but only transmitted. Why, to be celebrating the mere landing of the Pilgrims - to be trying to make out that this most natural and simple and customary procedure was an extraordinary circumstance - a circumstance to be amazed at, and admired, aggrandized and glorified, at orgies like this for two hundred and sixty years - hang it, a horse would have known enough to land; a horse - Pardon again; the gentleman on my right assures me that it was not merely the landing of the Pilgrims that we are celebrating, but the Pilgrims themselves. So we have struck an inconsistency here - one says it was the landing, the other says it was the Pilgrims. It is an inconsistency characteristic of your intractable and disputatious tribe, for you never agree about anything but Boston.  Well, then, what do you want to celebrate those Pilgrims for? They were a mighty hard lot - you know it. I grant you, without the slightest unwillingness, that they were a deal more gentle and merciful and just than were the people of Europe of that day; I grant you that they are better than their predecessors. But what of that? - that is nothing.  People always progress. You are better than your fathers and grandfathers were (this is the first time I have ever aimed a measureless slander at the departed, for I consider such things improper). Yes, those among you who have not been in the penitentiary, if such there be, are better than your fathers and grandfathers were; but is that any sufficient reason for getting up annual dinners and celebrating you? No, by no means - by no means. Well, I repeat, those Pilgrims were a hard lot. They took good care of themselves, but they abolished everybody elses ancestors. I am a border-ruffian from the State of Missouri. I am a Connecticut Yankee by adoption. In me, you have Missouri morals, Connecticut culture; this, gentlemen, is the combination which makes the perfect man. But where are my ancestors?  Whom shall I celebrate? Where shall I find the raw material?
+
+            My first American ancestor, gentlemen, was an Indian - an early Indian.  Your ancestors skinned him alive, and I am an orphan. Not one drop of my blood flows in that Indians veins today. I stand here, lone and forlorn, without an ancestor. They skinned him! I do not object to that, if they needed his fur; but alive, gentlemen-alive! They skinned him alive - and before company! That is what rankles. Think how he must have felt; for he was a sensitive person and easily embarrassed. If he had been a bird, it would have been all right, and no violence done to his feelings, because he would have been considered "dressed." But he was not a bird, gentlemen, he was a man, and probably one of the most undressed men that ever was. I ask you to put yourselves in his place.  I ask it as a favor; I ask it as a tardy act of justice; I ask it in the interest of fidelity to the traditions of your ancestors; I ask it that the world may contemplate, with vision unobstructed by disguising swallow-tails and white cravats, the spectacle which the true New England Society ought to present. Cease to come to these annual orgies in this hollow modern mockery - the surplusage of raiment. Come in character; come in the summer grace, come in the unadorned simplicity, come in the free and joyous costume which your sainted ancestors provided for mine.
+
+            Later ancestors of mine were the Quakers William Robinson, Marmaduke Stevenson, et al. Your tribe chased them out of the country for their religions sake; promised them death if they came back; for your ancestors had forsaken the homes they loved, and braved the perils of the sea, the implacable climate, and the savage wilderness, to acquire that highest and most precious of boons, freedom for every man on this broad continent to worship according to the dictates of his own conscience - and they were not going to allow a lot of pestiferous Quakers to interfere with it. Your ancestors broke forever the chains of political slavery, and gave the vote to every man in this wide land, excluding none! - none except those who did not belong to the orthodox church. Your ancestors - yes, they were a hard lot; but, nevertheless, they gave us religious liberty to worship as they required us to worship, and political liberty to vote as the church required; and so I the bereft one, I the forlorn one, am here to do my best to help you celebrate them right.
+
+            The Quaker woman Elizabeth Hooton was an ancestress of mine. Your people were pretty severe with her you will confess that. But, poor thing! I believe they changed her opinions before she died, and took her into their fold; and so we have every reason to presume that when she died she went to the same place which your ancestors went to. It is a great pity, for she was a good woman. Roger Williams was an ancestor of mine.  I dont really remember what your people did with him. But they banished him to Rhode Island, anyway. And then, I believe, recognizing that this was really carrying harshness to an unjustifiable extreme, they took pity on him and burned him. They were a hard lot! All those Salem witches were ancestors of mine! Your people made it tropical for them.  Yes, they did; by pressure and the gallows they made such a clean deal with them that there hasnt been a witch and hardly a halter in our family from that day to this, and that is one hundred and eighty-nine years. The first slave brought into New England out of Africa by your progenitors was an ancestor of mine - for I am of a mixed breed, an infinitely shaded and exquisite Mongrel. Im not one of your sham meerschaums that you can color in a week. No, my complexion is the patient art of eight generations. Well, in my own time, I had acquired a lot of my kin - by purchase, and swapping around, and one way and another - and was getting along very well. Then, with the inborn perversity of your lineage, you got up a war, and took them all away from me. And so, again am I bereft, again am I forlorn; no drop of my blood flows in the veins of any living being who is marketable.
+
+            O my friends, hear me and reform! I seek your good, not mine. You have heard the speeches. Disband these New England societies - nurseries of a system of steadily augmenting laudation and hosannaing, which; if persisted in uncurbed, may some day in the remote future beguile you into prevaricating and bragging. Oh, stop, stop, while you are still temperate in your appreciation of your ancestors! Hear me, I beseech you; get up an auction and sell Plymouth Rock! The Pilgrims were a simple and ignorant race. They never had seen any good rocks before, or at least any that were not watched, and so they were excusable for hopping ashore in frantic delight and clapping an iron fence around this one. But you, gentlemen, are educated; you are enlightened; you know that in the rich land of your nativity, opulent New England, overflowing with rocks, this one isnt worth, at the outside, more than thirty-five cents. Therefore, sell it, before it is injured by exposure, or at least throw it open to the patent-medicine advertisements, and let it earn its taxes:
+
+            Yes, hear your true friend-your only true friend - list to his voice.  Disband these societies, hotbeds of vice, of moral decay - perpetuators of ancestral superstition. Here on this board I see water, I see milk, I see the wild and deadly lemonade. These are but steps upon the downward path. Next we shall see tea, then chocolate, then coffee - hotel coffee.  A few more years - all too few, I fear - mark my words, we shall have cider!  Gentlemen, pause ere it be too late. You are on the broad road which leads to dissipation, physical ruin, moral decay, gory crime and the gallows! I beseech you, I implore you, in the name of your anxious friends, in the name of your suffering families, in the name of your impending widows and orphans, stop ere it be too late. Disband these New England societies, renounce these soul-blistering saturnalia, cease from varnishing the rusty reputations of your long-vanished ancestors - the super-high-moral old iron-clads of Cape Cod, the pious buccaneers of Plymouth Rock - go home, and try to learn to behave!
+
+            However, chaff and nonsense aside, I think I honor and appreciate your Pilgrim stock as much as you do yourselves, perhaps; and I endorse and adopt a sentiment uttered by a grandfather of mine once - a man of sturdy opinions, of sincere make of mind, and not given to flattery. He said: "People may talk as they like about that Pilgrim stock, but, after alls said and done, it would be pretty hard to improve on those people; and, as for me, I dont mind coming out flatfooted and saying there aint any way to improve on them - except having them born in, Missouri!"', NULL, 'Mark Twain', '2015-11-03 20:22:02.180102', '2015-11-03 20:22:02.180102', NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aposts" ("id","title","body","summary","author","created_at","updated_at","author_id") VALUES (3, 'The Lady in Pink', 'Two men were travelling together, one of whom never spoke the truth, whereas the other never told a lie: and they came in the course of their travels to the land of Apes.
+
+            The King of the Apes, hearing of their arrival, ordered them to be brought before him; and by way of impressing them with his magnificence, he received them sitting on a throne, while the Apes, his subjects, were ranged in long rows on either side of him.
+
+            When the Travellers came into his presence he asked them what they thought of him as a King.
+
+            The lying Traveller said, "Sire, every one must see that you are a most noble and mighty monarch."
+
+            "And what do you think of my subjects?" continued the King.
+
+            "They," said the Traveller, "are in every way worthy of their royal master."
+
+            The Ape was so delighted with his answer that he gave him a very handsome present.
+
+            The other Traveller thought that if his companion was rewarded so splendidly for telling a lie, he himself would certainly receive a still greater reward for telling the truth; so, when the Ape turned to him and said, "And what, sir, is your opinion?" he replied, "I think you are a very fine Ape, and all your subjects are fine Apes too."
+
+            The King of the Apes was so enraged at his reply that he ordered him to be taken away and clawed to death.', NULL, 'Sir Arthur Conan Doyle', '2015-11-03 20:23:04.791428', '2015-11-03 20:23:04.791428', NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aposts" ("id","title","body","summary","author","created_at","updated_at","author_id") VALUES (4, 'Consider the Lobster', 'Two men were travelling together, one of whom never spoke the truth, whereas the other never told a lie: and they came in the course of their travels to the land of Apes.
+
+            The King of the Apes, hearing of their arrival, ordered them to be brought before him; and by way of impressing them with his magnificence, he received them sitting on a throne, while the Apes, his subjects, were ranged in long rows on either side of him.
+
+            When the Travellers came into his presence he asked them what they thought of him as a King.
+
+            The lying Traveller said, "Sire, every one must see that you are a most noble and mighty monarch."
+
+            "And what do you think of my subjects?" continued the King.
+
+            "They," said the Traveller, "are in every way worthy of their royal master."
+
+            The Ape was so delighted with his answer that he gave him a very handsome present.
+
+            The other Traveller thought that if his companion was rewarded so splendidly for telling a lie, he himself would certainly receive a still greater reward for telling the truth; so, when the Ape turned to him and said, "And what, sir, is your opinion?" he replied, "I think you are a very fine Ape, and all your subjects are fine Apes too."
+
+            The King of the Apes was so enraged at his reply that he ordered him to be taken away and clawed to death.', NULL, 'David Foster Wallace', '2015-11-03 20:26:44.512357', '2015-11-03 20:26:44.512357', NULL)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "aposts" ("id","title","body","summary","author","created_at","updated_at","author_id") VALUES (5, 'Dr. Strangelove (or, how I learned to stop worrying and love the bomb)', 'Two men were travelling together, one of whom never spoke the truth, whereas the other never told a lie: and they came in the course of their travels to the land of Apes.
+
+            The King of the Apes, hearing of their arrival, ordered them to be brought before him; and by way of impressing them with his magnificence, he received them sitting on a throne, while the Apes, his subjects, were ranged in long rows on either side of him.
+
+            When the Travellers came into his presence he asked them what they thought of him as a King.
+
+            The lying Traveller said, "Sire, every one must see that you are a most noble and mighty monarch."
+
+            "And what do you think of my subjects?" continued the King.
+
+            "They," said the Traveller, "are in every way worthy of their royal master."
+
+            The Ape was so delighted with his answer that he gave him a very handsome present.
+
+            The other Traveller thought that if his companion was rewarded so splendidly for telling a lie, he himself would certainly receive a still greater reward for telling the truth; so, when the Ape turned to him and said, "And what, sir, is your opinion?" he replied, "I think you are a very fine Ape, and all your subjects are fine Apes too."
+
+            The King of the Apes was so enraged at his reply that he ordered him to be taken away and clawed to death.', NULL, 'Stanley Kubrick', '2015-11-03 20:27:22.932500', '2015-11-03 20:27:22.932500', NULL)[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "aposts" ("id","title","body","summary","author","created_at","updated_at","author_id") VALUES (6, 'This is a Random Post about Zombie Kittens', 'GUARD THE GOURDS Although fall decorations such as pumpkins, hay and corn aren’t toxic per se, they can cause tummy upset and intestinal blockage if consumed. So, keep decorations away from curious canines and cats.
+
+          WATCH FOR WIRES Lights and moving lawn figures sure make for a spooky scene, but exposed electrical wires are a definite hazard to our four-legged friends. Chewing on wires can cause burns and even electrical shock, so make sure any wires are kept out of reach!
+
+          LOSE THE LANTERNS We’re all for Jack-O-Lanterns, but using real candles to light those ghoulish grins isn’t just a fire hazard. Playful pets who knock over flickering flames could easily get burned. Try battery powered candles instead!', NULL, 'Matthew Fair', '2015-11-03 20:29:38.192462', '2015-11-03 20:29:38.192462', NULL)
+  [1m[36m (1.6ms)[0m  [1mDROP TABLE "posts"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "summary" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "author_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "aposts"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "posts" ("id","title","body","summary","created_at","updated_at","author_id") VALUES (1, 'The Apes and The Two Travelers', 'Two men were travelling together, one of whom never spoke the truth, whereas the other never told a lie: and they came in the course of their travels to the land of Apes.
+
+            The King of the Apes, hearing of their arrival, ordered them to be brought before him; and by way of impressing them with his magnificence, he received them sitting on a throne, while the Apes, his subjects, were ranged in long rows on either side of him.
+
+            When the Travellers came into his presence he asked them what they thought of him as a King.
+
+            The lying Traveller said, "Sire, every one must see that you are a most noble and mighty monarch."
+
+            "And what do you think of my subjects?" continued the King.
+
+            "They," said the Traveller, "are in every way worthy of their royal master."
+
+            The Ape was so delighted with his answer that he gave him a very handsome present.
+
+            The other Traveller thought that if his companion was rewarded so splendidly for telling a lie, he himself would certainly receive a still greater reward for telling the truth; so, when the Ape turned to him and said, "And what, sir, is your opinion?" he replied, "I think you are a very fine Ape, and all your subjects are fine Apes too."
+
+            The King of the Apes was so enraged at his reply that he ordered him to be taken away and clawed to death.', NULL, '2015-11-03 20:15:39.095283', '2015-11-03 20:15:39.095283', NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "posts" ("id","title","body","summary","created_at","updated_at","author_id") VALUES (2, 'Plymouth Rock and the Pilgrims', 'I rise to protest. I have kept still for years; but really I think there is no sufficient justification for this sort of thing. What do you want to celebrate those people for? - those ancestors of yours of 1620 - the Mayflower tribe, I mean. What do you want to celebrate them for? Your pardon: the gentleman at my left assures me that you are not celebrating the Pilgrims themselves, but the landing of the Pilgrims at Plymouth rock on the 22d of December. So you are celebrating their landing. Why, the other pretext was thin enough, but this is thinner than ever; the other was tissue, tinfoil, fish-bladder, but this is gold-leaf.  Celebrating their lauding! What was there remarkable about it, I would like to know? What can you be thinking of? Why, those Pilgrims had been at sea three or four months. It was the very middle of winter: it was as cold as death off Cape Cod there. Why shouldnt they come ashore? If they hadnt landed there would be some reason for celebrating the fact: It would have been a case of monumental leatherheadedness which the world would not willingly let die. If it had been you, gentlemen, you probably wouldnt have landed, but you have no shadow of right to be celebrating, in your ancestors, gifts which they did not exercise, but only transmitted. Why, to be celebrating the mere landing of the Pilgrims - to be trying to make out that this most natural and simple and customary procedure was an extraordinary circumstance - a circumstance to be amazed at, and admired, aggrandized and glorified, at orgies like this for two hundred and sixty years - hang it, a horse would have known enough to land; a horse - Pardon again; the gentleman on my right assures me that it was not merely the landing of the Pilgrims that we are celebrating, but the Pilgrims themselves. So we have struck an inconsistency here - one says it was the landing, the other says it was the Pilgrims. It is an inconsistency characteristic of your intractable and disputatious tribe, for you never agree about anything but Boston.  Well, then, what do you want to celebrate those Pilgrims for? They were a mighty hard lot - you know it. I grant you, without the slightest unwillingness, that they were a deal more gentle and merciful and just than were the people of Europe of that day; I grant you that they are better than their predecessors. But what of that? - that is nothing.  People always progress. You are better than your fathers and grandfathers were (this is the first time I have ever aimed a measureless slander at the departed, for I consider such things improper). Yes, those among you who have not been in the penitentiary, if such there be, are better than your fathers and grandfathers were; but is that any sufficient reason for getting up annual dinners and celebrating you? No, by no means - by no means. Well, I repeat, those Pilgrims were a hard lot. They took good care of themselves, but they abolished everybody elses ancestors. I am a border-ruffian from the State of Missouri. I am a Connecticut Yankee by adoption. In me, you have Missouri morals, Connecticut culture; this, gentlemen, is the combination which makes the perfect man. But where are my ancestors?  Whom shall I celebrate? Where shall I find the raw material?
+
+            My first American ancestor, gentlemen, was an Indian - an early Indian.  Your ancestors skinned him alive, and I am an orphan. Not one drop of my blood flows in that Indians veins today. I stand here, lone and forlorn, without an ancestor. They skinned him! I do not object to that, if they needed his fur; but alive, gentlemen-alive! They skinned him alive - and before company! That is what rankles. Think how he must have felt; for he was a sensitive person and easily embarrassed. If he had been a bird, it would have been all right, and no violence done to his feelings, because he would have been considered "dressed." But he was not a bird, gentlemen, he was a man, and probably one of the most undressed men that ever was. I ask you to put yourselves in his place.  I ask it as a favor; I ask it as a tardy act of justice; I ask it in the interest of fidelity to the traditions of your ancestors; I ask it that the world may contemplate, with vision unobstructed by disguising swallow-tails and white cravats, the spectacle which the true New England Society ought to present. Cease to come to these annual orgies in this hollow modern mockery - the surplusage of raiment. Come in character; come in the summer grace, come in the unadorned simplicity, come in the free and joyous costume which your sainted ancestors provided for mine.
+
+            Later ancestors of mine were the Quakers William Robinson, Marmaduke Stevenson, et al. Your tribe chased them out of the country for their religions sake; promised them death if they came back; for your ancestors had forsaken the homes they loved, and braved the perils of the sea, the implacable climate, and the savage wilderness, to acquire that highest and most precious of boons, freedom for every man on this broad continent to worship according to the dictates of his own conscience - and they were not going to allow a lot of pestiferous Quakers to interfere with it. Your ancestors broke forever the chains of political slavery, and gave the vote to every man in this wide land, excluding none! - none except those who did not belong to the orthodox church. Your ancestors - yes, they were a hard lot; but, nevertheless, they gave us religious liberty to worship as they required us to worship, and political liberty to vote as the church required; and so I the bereft one, I the forlorn one, am here to do my best to help you celebrate them right.
+
+            The Quaker woman Elizabeth Hooton was an ancestress of mine. Your people were pretty severe with her you will confess that. But, poor thing! I believe they changed her opinions before she died, and took her into their fold; and so we have every reason to presume that when she died she went to the same place which your ancestors went to. It is a great pity, for she was a good woman. Roger Williams was an ancestor of mine.  I dont really remember what your people did with him. But they banished him to Rhode Island, anyway. And then, I believe, recognizing that this was really carrying harshness to an unjustifiable extreme, they took pity on him and burned him. They were a hard lot! All those Salem witches were ancestors of mine! Your people made it tropical for them.  Yes, they did; by pressure and the gallows they made such a clean deal with them that there hasnt been a witch and hardly a halter in our family from that day to this, and that is one hundred and eighty-nine years. The first slave brought into New England out of Africa by your progenitors was an ancestor of mine - for I am of a mixed breed, an infinitely shaded and exquisite Mongrel. Im not one of your sham meerschaums that you can color in a week. No, my complexion is the patient art of eight generations. Well, in my own time, I had acquired a lot of my kin - by purchase, and swapping around, and one way and another - and was getting along very well. Then, with the inborn perversity of your lineage, you got up a war, and took them all away from me. And so, again am I bereft, again am I forlorn; no drop of my blood flows in the veins of any living being who is marketable.
+
+            O my friends, hear me and reform! I seek your good, not mine. You have heard the speeches. Disband these New England societies - nurseries of a system of steadily augmenting laudation and hosannaing, which; if persisted in uncurbed, may some day in the remote future beguile you into prevaricating and bragging. Oh, stop, stop, while you are still temperate in your appreciation of your ancestors! Hear me, I beseech you; get up an auction and sell Plymouth Rock! The Pilgrims were a simple and ignorant race. They never had seen any good rocks before, or at least any that were not watched, and so they were excusable for hopping ashore in frantic delight and clapping an iron fence around this one. But you, gentlemen, are educated; you are enlightened; you know that in the rich land of your nativity, opulent New England, overflowing with rocks, this one isnt worth, at the outside, more than thirty-five cents. Therefore, sell it, before it is injured by exposure, or at least throw it open to the patent-medicine advertisements, and let it earn its taxes:
+
+            Yes, hear your true friend-your only true friend - list to his voice.  Disband these societies, hotbeds of vice, of moral decay - perpetuators of ancestral superstition. Here on this board I see water, I see milk, I see the wild and deadly lemonade. These are but steps upon the downward path. Next we shall see tea, then chocolate, then coffee - hotel coffee.  A few more years - all too few, I fear - mark my words, we shall have cider!  Gentlemen, pause ere it be too late. You are on the broad road which leads to dissipation, physical ruin, moral decay, gory crime and the gallows! I beseech you, I implore you, in the name of your anxious friends, in the name of your suffering families, in the name of your impending widows and orphans, stop ere it be too late. Disband these New England societies, renounce these soul-blistering saturnalia, cease from varnishing the rusty reputations of your long-vanished ancestors - the super-high-moral old iron-clads of Cape Cod, the pious buccaneers of Plymouth Rock - go home, and try to learn to behave!
+
+            However, chaff and nonsense aside, I think I honor and appreciate your Pilgrim stock as much as you do yourselves, perhaps; and I endorse and adopt a sentiment uttered by a grandfather of mine once - a man of sturdy opinions, of sincere make of mind, and not given to flattery. He said: "People may talk as they like about that Pilgrim stock, but, after alls said and done, it would be pretty hard to improve on those people; and, as for me, I dont mind coming out flatfooted and saying there aint any way to improve on them - except having them born in, Missouri!"', NULL, '2015-11-03 20:22:02.180102', '2015-11-03 20:22:02.180102', NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "posts" ("id","title","body","summary","created_at","updated_at","author_id") VALUES (3, 'The Lady in Pink', 'Two men were travelling together, one of whom never spoke the truth, whereas the other never told a lie: and they came in the course of their travels to the land of Apes.
+
+            The King of the Apes, hearing of their arrival, ordered them to be brought before him; and by way of impressing them with his magnificence, he received them sitting on a throne, while the Apes, his subjects, were ranged in long rows on either side of him.
+
+            When the Travellers came into his presence he asked them what they thought of him as a King.
+
+            The lying Traveller said, "Sire, every one must see that you are a most noble and mighty monarch."
+
+            "And what do you think of my subjects?" continued the King.
+
+            "They," said the Traveller, "are in every way worthy of their royal master."
+
+            The Ape was so delighted with his answer that he gave him a very handsome present.
+
+            The other Traveller thought that if his companion was rewarded so splendidly for telling a lie, he himself would certainly receive a still greater reward for telling the truth; so, when the Ape turned to him and said, "And what, sir, is your opinion?" he replied, "I think you are a very fine Ape, and all your subjects are fine Apes too."
+
+            The King of the Apes was so enraged at his reply that he ordered him to be taken away and clawed to death.', NULL, '2015-11-03 20:23:04.791428', '2015-11-03 20:23:04.791428', NULL)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "posts" ("id","title","body","summary","created_at","updated_at","author_id") VALUES (4, 'Consider the Lobster', 'Two men were travelling together, one of whom never spoke the truth, whereas the other never told a lie: and they came in the course of their travels to the land of Apes.
+
+            The King of the Apes, hearing of their arrival, ordered them to be brought before him; and by way of impressing them with his magnificence, he received them sitting on a throne, while the Apes, his subjects, were ranged in long rows on either side of him.
+
+            When the Travellers came into his presence he asked them what they thought of him as a King.
+
+            The lying Traveller said, "Sire, every one must see that you are a most noble and mighty monarch."
+
+            "And what do you think of my subjects?" continued the King.
+
+            "They," said the Traveller, "are in every way worthy of their royal master."
+
+            The Ape was so delighted with his answer that he gave him a very handsome present.
+
+            The other Traveller thought that if his companion was rewarded so splendidly for telling a lie, he himself would certainly receive a still greater reward for telling the truth; so, when the Ape turned to him and said, "And what, sir, is your opinion?" he replied, "I think you are a very fine Ape, and all your subjects are fine Apes too."
+
+            The King of the Apes was so enraged at his reply that he ordered him to be taken away and clawed to death.', NULL, '2015-11-03 20:26:44.512357', '2015-11-03 20:26:44.512357', NULL)[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "posts" ("id","title","body","summary","created_at","updated_at","author_id") VALUES (5, 'Dr. Strangelove (or, how I learned to stop worrying and love the bomb)', 'Two men were travelling together, one of whom never spoke the truth, whereas the other never told a lie: and they came in the course of their travels to the land of Apes.
+
+            The King of the Apes, hearing of their arrival, ordered them to be brought before him; and by way of impressing them with his magnificence, he received them sitting on a throne, while the Apes, his subjects, were ranged in long rows on either side of him.
+
+            When the Travellers came into his presence he asked them what they thought of him as a King.
+
+            The lying Traveller said, "Sire, every one must see that you are a most noble and mighty monarch."
+
+            "And what do you think of my subjects?" continued the King.
+
+            "They," said the Traveller, "are in every way worthy of their royal master."
+
+            The Ape was so delighted with his answer that he gave him a very handsome present.
+
+            The other Traveller thought that if his companion was rewarded so splendidly for telling a lie, he himself would certainly receive a still greater reward for telling the truth; so, when the Ape turned to him and said, "And what, sir, is your opinion?" he replied, "I think you are a very fine Ape, and all your subjects are fine Apes too."
+
+            The King of the Apes was so enraged at his reply that he ordered him to be taken away and clawed to death.', NULL, '2015-11-03 20:27:22.932500', '2015-11-03 20:27:22.932500', NULL)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "posts" ("id","title","body","summary","created_at","updated_at","author_id") VALUES (6, 'This is a Random Post about Zombie Kittens', 'GUARD THE GOURDS Although fall decorations such as pumpkins, hay and corn aren’t toxic per se, they can cause tummy upset and intestinal blockage if consumed. So, keep decorations away from curious canines and cats.
+
+          WATCH FOR WIRES Lights and moving lawn figures sure make for a spooky scene, but exposed electrical wires are a definite hazard to our four-legged friends. Chewing on wires can cause burns and even electrical shock, so make sure any wires are kept out of reach!
+
+          LOSE THE LANTERNS We’re all for Jack-O-Lanterns, but using real candles to light those ghoulish grins isn’t just a fire hazard. Playful pets who knock over flickering flames could easily get burned. Try battery powered candles instead!', NULL, '2015-11-03 20:29:38.192462', '2015-11-03 20:29:38.192462', NULL)[0m
+  [1m[35m (0.4ms)[0m  DROP TABLE "aposts"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104003952"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" DESC LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.8ms)[0m  [1mUPDATE "posts" SET "author_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["author_id", 1], ["updated_at", "2015-11-04 00:55:17.575096"], ["id", 1]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (2.1ms)[0m  [1mUPDATE "posts" SET "author_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["author_id", 2], ["updated_at", "2015-11-04 00:55:31.421697"], ["id", 2]]
+  [1m[35m (4.6ms)[0m  commit transaction
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "posts" SET "author_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["author_id", 3], ["updated_at", "2015-11-04 00:55:45.433239"], ["id", 3]]
+  [1m[35m (3.7ms)[0m  commit transaction
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "posts" SET "author_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["author_id", 4], ["updated_at", "2015-11-04 00:55:57.847866"], ["id", 4]]
+  [1m[35m (6.3ms)[0m  commit transaction
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "posts" SET "author_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["author_id", 5], ["updated_at", "2015-11-04 00:56:08.534598"], ["id", 5]]
+  [1m[35m (7.1ms)[0m  commit transaction
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "posts" SET "author_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["author_id", 6], ["updated_at", "2015-11-04 00:56:19.433218"], ["id", 6]]
+  [1m[35m (5.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mPost Load (1.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" ASC LIMIT 1
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" ASC LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."author_id" = ?  [["author_id", 1]]
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = ?[0m  [["author_id", 2]]
+
+
+Started GET "/" for ::1 at 2015-11-03 20:03:01 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered welcome/posts.html.erb within layouts/application (176.0ms)
+Completed 200 OK in 921ms (Views: 892.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/posts/4" for ::1 at 2015-11-03 20:03:09 -0500
+Processing by WelcomeController#posts as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered welcome/posts.html.erb within layouts/application (33.1ms)
+Completed 200 OK in 141ms (Views: 138.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/4" for ::1 at 2015-11-03 20:04:21 -0500
+Processing by WelcomeController#posts as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered welcome/posts.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 148ms (Views: 145.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/application.self-39872bb8ef813def6065c2fea193f0a291841ed307ea2ac836d2c05b319efa78.css?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/show.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/search.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/bootstrap/affix.self-f7aef9d98ee5ece34a6a92a6a15bba777d93e8d908b75c95a85088277f394200.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/bootstrap/alert.self-896ab026e6823f5cef2441e07dac53d0692a5b772ac58b1ce20aa624c342d3f4.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/bootstrap/button.self-d19f3e2bcd3a7a4d75c11b9141b3fabd2c11987da1e99c85548ec3ecf8db30c3.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/bootstrap/carousel.self-b2e5e14483e6c31343a83861b7d487620f143d6fc2d07d5ae7544b6b225ba6be.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/bootstrap/collapse.self-93820e9b486e375a7fb4477602def3a6f8381fa6d50938d5378297ffbe4a1248.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.self-30536ae4d54b2685c26b5787ed0eb549a9075717fe690cce6270873bedf2df00.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/bootstrap/tab.self-9b77df34cbbb08ec93a806d6cdb741f04e3dbf3389978a0679146f2d2987bc89.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/bootstrap/transition.self-9616c4e856b57659b67da3c6f2adcd584b5601ef4bebcdadab8ebb387d80bb25.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.self-c5c6ed008955656d345067e9821d79f1216b8383134d08465d4aa1a33a2b93b4.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/bootstrap/modal.self-bcfe54f3132bf16a8c5ce4289e47eba488f6522a08f49f378a037061c6c7aa4c.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.self-3aa41fbe871573b34e0ebddf31598cd5a11a9841ca85f90934ea46326e46626d.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/bootstrap/popover.self-b73e9c9111d01148e24bbc46e096782e024dc5db630e7078cf11ed2587ef8551.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/saturn-020199f8c25c2ea9df5fc80321dc655ab436a1e335aa7fff27a2e9b3d63e5794.jpg" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/kitty-e796f9122fa0489ce634c38425ab11e43239893a9675f472197a463f0381f677.jpg" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/lobster-b49e8ceb7b3ab710bd828de7e330a91287af24381fbe5f4cde5347b60c49e5ab.jpg" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/cornball-ad-6e3d58fecee68eb61886800fbcd1dfd2d4bbf6ae9862aa86941f543320cd10ac.jpg" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/jumbotron-1036af4b3a47f13cb0dae27fecf41860467cc4e2096b916f74da140e1c4f6992.jpg" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular-fe185d11a49676890d47bb783312a0cda5a44c4039214094e7957b4c040ef11c.woff2" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/space_image3-4600395914e38df1b1c3e42c051b2f6373394e9067effa4123578bb2651856c3.jpg" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/space_image2-35740659797968eccffb0b340bb7481889d25bc31cbf68e4c4fb5fdd53f4442e.jpg" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/space_image4-3d13de50ba436fc8f4b5b3b5eb3ada946d051899e7f2cc3884388b8a242d0e4b.jpg" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/assets/space_image1-0c4a1f967c68e73026fe47860c76ae8ecb4a61834a813d8a4461ac177744968c.jpg" for ::1 at 2015-11-03 20:04:21 -0500
+
+
+Started GET "/posts/4" for ::1 at 2015-11-03 20:04:39 -0500
+Processing by WelcomeController#posts as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered welcome/posts.html.erb within layouts/application (27.7ms)
+Completed 200 OK in 152ms (Views: 144.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.self-39872bb8ef813def6065c2fea193f0a291841ed307ea2ac836d2c05b319efa78.css?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/show.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/bootstrap/affix.self-f7aef9d98ee5ece34a6a92a6a15bba777d93e8d908b75c95a85088277f394200.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/bootstrap/alert.self-896ab026e6823f5cef2441e07dac53d0692a5b772ac58b1ce20aa624c342d3f4.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/search.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/bootstrap/carousel.self-b2e5e14483e6c31343a83861b7d487620f143d6fc2d07d5ae7544b6b225ba6be.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/bootstrap/button.self-d19f3e2bcd3a7a4d75c11b9141b3fabd2c11987da1e99c85548ec3ecf8db30c3.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/bootstrap/collapse.self-93820e9b486e375a7fb4477602def3a6f8381fa6d50938d5378297ffbe4a1248.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.self-30536ae4d54b2685c26b5787ed0eb549a9075717fe690cce6270873bedf2df00.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/bootstrap/tab.self-9b77df34cbbb08ec93a806d6cdb741f04e3dbf3389978a0679146f2d2987bc89.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/bootstrap/transition.self-9616c4e856b57659b67da3c6f2adcd584b5601ef4bebcdadab8ebb387d80bb25.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.self-c5c6ed008955656d345067e9821d79f1216b8383134d08465d4aa1a33a2b93b4.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/bootstrap/modal.self-bcfe54f3132bf16a8c5ce4289e47eba488f6522a08f49f378a037061c6c7aa4c.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.self-3aa41fbe871573b34e0ebddf31598cd5a11a9841ca85f90934ea46326e46626d.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/bootstrap/popover.self-b73e9c9111d01148e24bbc46e096782e024dc5db630e7078cf11ed2587ef8551.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/saturn-020199f8c25c2ea9df5fc80321dc655ab436a1e335aa7fff27a2e9b3d63e5794.jpg" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/wallace-6960533fdc8d92b23b55c63d899f04d97a01343351109f5810c27fa51346da38.jpg" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/cornball-ad-6e3d58fecee68eb61886800fbcd1dfd2d4bbf6ae9862aa86941f543320cd10ac.jpg" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/lobster-b49e8ceb7b3ab710bd828de7e330a91287af24381fbe5f4cde5347b60c49e5ab.jpg" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/jumbotron-1036af4b3a47f13cb0dae27fecf41860467cc4e2096b916f74da140e1c4f6992.jpg" for ::1 at 2015-11-03 20:04:39 -0500
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular-fe185d11a49676890d47bb783312a0cda5a44c4039214094e7957b4c040ef11c.woff2" for ::1 at 2015-11-03 20:04:40 -0500
+
+
+Started GET "/assets/space_image1-0c4a1f967c68e73026fe47860c76ae8ecb4a61834a813d8a4461ac177744968c.jpg" for ::1 at 2015-11-03 20:04:40 -0500
+
+
+Started GET "/assets/space_image2-35740659797968eccffb0b340bb7481889d25bc31cbf68e4c4fb5fdd53f4442e.jpg" for ::1 at 2015-11-03 20:04:40 -0500
+
+
+Started GET "/assets/space_image3-4600395914e38df1b1c3e42c051b2f6373394e9067effa4123578bb2651856c3.jpg" for ::1 at 2015-11-03 20:04:40 -0500
+
+
+Started GET "/assets/space_image4-3d13de50ba436fc8f4b5b3b5eb3ada946d051899e7f2cc3884388b8a242d0e4b.jpg" for ::1 at 2015-11-03 20:04:40 -0500
+
+
+Started GET "/posts/4" for ::1 at 2015-11-03 20:05:28 -0500
+Processing by WelcomeController#posts as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.3ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered welcome/posts.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 131ms (Views: 124.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.self-39872bb8ef813def6065c2fea193f0a291841ed307ea2ac836d2c05b319efa78.css?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/search.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/show.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/bootstrap/affix.self-f7aef9d98ee5ece34a6a92a6a15bba777d93e8d908b75c95a85088277f394200.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/bootstrap/alert.self-896ab026e6823f5cef2441e07dac53d0692a5b772ac58b1ce20aa624c342d3f4.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/bootstrap/button.self-d19f3e2bcd3a7a4d75c11b9141b3fabd2c11987da1e99c85548ec3ecf8db30c3.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/bootstrap/carousel.self-b2e5e14483e6c31343a83861b7d487620f143d6fc2d07d5ae7544b6b225ba6be.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/bootstrap/collapse.self-93820e9b486e375a7fb4477602def3a6f8381fa6d50938d5378297ffbe4a1248.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.self-30536ae4d54b2685c26b5787ed0eb549a9075717fe690cce6270873bedf2df00.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/bootstrap/tab.self-9b77df34cbbb08ec93a806d6cdb741f04e3dbf3389978a0679146f2d2987bc89.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/bootstrap/transition.self-9616c4e856b57659b67da3c6f2adcd584b5601ef4bebcdadab8ebb387d80bb25.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.self-c5c6ed008955656d345067e9821d79f1216b8383134d08465d4aa1a33a2b93b4.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/bootstrap/modal.self-bcfe54f3132bf16a8c5ce4289e47eba488f6522a08f49f378a037061c6c7aa4c.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.self-3aa41fbe871573b34e0ebddf31598cd5a11a9841ca85f90934ea46326e46626d.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/bootstrap/popover.self-b73e9c9111d01148e24bbc46e096782e024dc5db630e7078cf11ed2587ef8551.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/saturn-020199f8c25c2ea9df5fc80321dc655ab436a1e335aa7fff27a2e9b3d63e5794.jpg" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/wallace-6960533fdc8d92b23b55c63d899f04d97a01343351109f5810c27fa51346da38.jpg" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/lobster-b49e8ceb7b3ab710bd828de7e330a91287af24381fbe5f4cde5347b60c49e5ab.jpg" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/cornball-ad-6e3d58fecee68eb61886800fbcd1dfd2d4bbf6ae9862aa86941f543320cd10ac.jpg" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/jumbotron-1036af4b3a47f13cb0dae27fecf41860467cc4e2096b916f74da140e1c4f6992.jpg" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/space_image3-4600395914e38df1b1c3e42c051b2f6373394e9067effa4123578bb2651856c3.jpg" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/space_image1-0c4a1f967c68e73026fe47860c76ae8ecb4a61834a813d8a4461ac177744968c.jpg" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/space_image2-35740659797968eccffb0b340bb7481889d25bc31cbf68e4c4fb5fdd53f4442e.jpg" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/space_image4-3d13de50ba436fc8f4b5b3b5eb3ada946d051899e7f2cc3884388b8a242d0e4b.jpg" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular-fe185d11a49676890d47bb783312a0cda5a44c4039214094e7957b4c040ef11c.woff2" for ::1 at 2015-11-03 20:05:28 -0500
+
+
+Started GET "/posts/4" for ::1 at 2015-11-03 20:09:05 -0500
+Processing by WelcomeController#posts as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered welcome/posts.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 122ms (Views: 120.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self-39872bb8ef813def6065c2fea193f0a291841ed307ea2ac836d2c05b319efa78.css?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/search.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/show.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/bootstrap/affix.self-f7aef9d98ee5ece34a6a92a6a15bba777d93e8d908b75c95a85088277f394200.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/bootstrap/alert.self-896ab026e6823f5cef2441e07dac53d0692a5b772ac58b1ce20aa624c342d3f4.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/bootstrap/button.self-d19f3e2bcd3a7a4d75c11b9141b3fabd2c11987da1e99c85548ec3ecf8db30c3.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/bootstrap/carousel.self-b2e5e14483e6c31343a83861b7d487620f143d6fc2d07d5ae7544b6b225ba6be.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/bootstrap/collapse.self-93820e9b486e375a7fb4477602def3a6f8381fa6d50938d5378297ffbe4a1248.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.self-30536ae4d54b2685c26b5787ed0eb549a9075717fe690cce6270873bedf2df00.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/bootstrap/tab.self-9b77df34cbbb08ec93a806d6cdb741f04e3dbf3389978a0679146f2d2987bc89.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/bootstrap/transition.self-9616c4e856b57659b67da3c6f2adcd584b5601ef4bebcdadab8ebb387d80bb25.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.self-c5c6ed008955656d345067e9821d79f1216b8383134d08465d4aa1a33a2b93b4.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/bootstrap/modal.self-bcfe54f3132bf16a8c5ce4289e47eba488f6522a08f49f378a037061c6c7aa4c.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.self-3aa41fbe871573b34e0ebddf31598cd5a11a9841ca85f90934ea46326e46626d.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/bootstrap/popover.self-b73e9c9111d01148e24bbc46e096782e024dc5db630e7078cf11ed2587ef8551.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/saturn-020199f8c25c2ea9df5fc80321dc655ab436a1e335aa7fff27a2e9b3d63e5794.jpg" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/wallace-6960533fdc8d92b23b55c63d899f04d97a01343351109f5810c27fa51346da38.jpg" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/lobster-b49e8ceb7b3ab710bd828de7e330a91287af24381fbe5f4cde5347b60c49e5ab.jpg" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/cornball-ad-6e3d58fecee68eb61886800fbcd1dfd2d4bbf6ae9862aa86941f543320cd10ac.jpg" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/jumbotron-1036af4b3a47f13cb0dae27fecf41860467cc4e2096b916f74da140e1c4f6992.jpg" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular-fe185d11a49676890d47bb783312a0cda5a44c4039214094e7957b4c040ef11c.woff2" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/space_image2-35740659797968eccffb0b340bb7481889d25bc31cbf68e4c4fb5fdd53f4442e.jpg" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/space_image1-0c4a1f967c68e73026fe47860c76ae8ecb4a61834a813d8a4461ac177744968c.jpg" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/space_image3-4600395914e38df1b1c3e42c051b2f6373394e9067effa4123578bb2651856c3.jpg" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/assets/space_image4-3d13de50ba436fc8f4b5b3b5eb3ada946d051899e7f2cc3884388b8a242d0e4b.jpg" for ::1 at 2015-11-03 20:09:05 -0500
+
+
+Started GET "/posts/3" for ::1 at 2015-11-03 20:09:12 -0500
+Processing by WelcomeController#posts as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered welcome/posts.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 143ms (Views: 141.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/5" for ::1 at 2015-11-03 20:09:15 -0500
+Processing by WelcomeController#posts as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered welcome/posts.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 133ms (Views: 131.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/images/kubrik.jpg" for ::1 at 2015-11-03 20:09:16 -0500
+
+ActionController::RoutingError (No route matches [GET] "/images/kubrik.jpg"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/Cellar/ruby/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/Cellar/ruby/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/Cellar/ruby/2.2.3/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (16.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (118.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (48.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (105.6ms)
+
+
+Started GET "/posts/5" for ::1 at 2015-11-03 20:09:32 -0500
+Processing by WelcomeController#posts as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.3ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered welcome/posts.html.erb within layouts/application (26.8ms)
+Completed 200 OK in 158ms (Views: 144.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/show.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/application.self-39872bb8ef813def6065c2fea193f0a291841ed307ea2ac836d2c05b319efa78.css?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/search.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/bootstrap/affix.self-f7aef9d98ee5ece34a6a92a6a15bba777d93e8d908b75c95a85088277f394200.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/bootstrap/alert.self-896ab026e6823f5cef2441e07dac53d0692a5b772ac58b1ce20aa624c342d3f4.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/bootstrap/button.self-d19f3e2bcd3a7a4d75c11b9141b3fabd2c11987da1e99c85548ec3ecf8db30c3.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/bootstrap/carousel.self-b2e5e14483e6c31343a83861b7d487620f143d6fc2d07d5ae7544b6b225ba6be.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/bootstrap/collapse.self-93820e9b486e375a7fb4477602def3a6f8381fa6d50938d5378297ffbe4a1248.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.self-30536ae4d54b2685c26b5787ed0eb549a9075717fe690cce6270873bedf2df00.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/bootstrap/tab.self-9b77df34cbbb08ec93a806d6cdb741f04e3dbf3389978a0679146f2d2987bc89.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/bootstrap/transition.self-9616c4e856b57659b67da3c6f2adcd584b5601ef4bebcdadab8ebb387d80bb25.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.self-c5c6ed008955656d345067e9821d79f1216b8383134d08465d4aa1a33a2b93b4.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/bootstrap/modal.self-bcfe54f3132bf16a8c5ce4289e47eba488f6522a08f49f378a037061c6c7aa4c.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.self-3aa41fbe871573b34e0ebddf31598cd5a11a9841ca85f90934ea46326e46626d.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/bootstrap/popover.self-b73e9c9111d01148e24bbc46e096782e024dc5db630e7078cf11ed2587ef8551.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/saturn-020199f8c25c2ea9df5fc80321dc655ab436a1e335aa7fff27a2e9b3d63e5794.jpg" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/kubrick-cd19aeafa9bf03d6323c77a38af54ea744c8dab9553d872b6f915329afea9b30.jpg" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/cornball-ad-6e3d58fecee68eb61886800fbcd1dfd2d4bbf6ae9862aa86941f543320cd10ac.jpg" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/strangelove-a44dac5e2b1b962ad0cb5db4d322a4521a0c416ef5725cbcbcee08c09f911428.jpg" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/jumbotron-1036af4b3a47f13cb0dae27fecf41860467cc4e2096b916f74da140e1c4f6992.jpg" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular-fe185d11a49676890d47bb783312a0cda5a44c4039214094e7957b4c040ef11c.woff2" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/space_image4-3d13de50ba436fc8f4b5b3b5eb3ada946d051899e7f2cc3884388b8a242d0e4b.jpg" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/space_image3-4600395914e38df1b1c3e42c051b2f6373394e9067effa4123578bb2651856c3.jpg" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/space_image1-0c4a1f967c68e73026fe47860c76ae8ecb4a61834a813d8a4461ac177744968c.jpg" for ::1 at 2015-11-03 20:09:32 -0500
+
+
+Started GET "/assets/space_image2-35740659797968eccffb0b340bb7481889d25bc31cbf68e4c4fb5fdd53f4442e.jpg" for ::1 at 2015-11-03 20:09:32 -0500
