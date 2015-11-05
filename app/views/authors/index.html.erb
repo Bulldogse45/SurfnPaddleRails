@@ -1,0 +1,11 @@
+
+<div class="container">
+  <h1 class="text-center">Authors</h1>
+  <div class="col-xs-8 col-xs-offset-2">
+    <ul>
+      <% Author.all.each do |a| %>
+        <li><%= link_to a.name, author_path(id:a.id) %> <%= link_to "Edit", edit_author_path(id:a.id) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

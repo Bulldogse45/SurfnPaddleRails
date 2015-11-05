@@ -17,7 +17,6 @@ class WelcomeController < ApplicationController
   def create
 
     @post = Post.new(post_params)
-    @post.author_id = 6
     if @post.save
       @other_posts = Post.all
       redirect_to root_path
@@ -50,6 +49,6 @@ class WelcomeController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title,:body)
+    params.require(:post).permit(:title,:body, :author_id)
   end
 end

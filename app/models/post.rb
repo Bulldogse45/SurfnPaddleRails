@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   belongs_to :author
 
   validates :title, :body, :author, :presence => true
-
+  validates :title, length: {minimum: 10, too_short: "Your post title must be at least #{count} characters long"}
 
   def post_image
     case self.id

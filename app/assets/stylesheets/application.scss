@@ -13,6 +13,7 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "authors";
  *{
    font-family: Helvetica;
  }
@@ -206,4 +207,7 @@
  .nav-tabs > li, .nav-pills > li {
    float:none;
    display:inline-block;
+ }
+ .auth_image {
+   max-width: 180px;
  }

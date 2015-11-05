@@ -1,0 +1,33 @@
+<% if params[:action] == "new" || params[:action] == "create" %>
+  <h1 class="text-center">New Author</h1>
+<% else %>
+  <h1 class="text-center">Edit Author</h1>
+<% end %>
+
+<% if @author.errors.any? %>
+  <h2>Errors:<%=  %></h2>
+  <ul>
+    <% @post.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @author, html: {class: "form-horizontal"} do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name, class: "col-sm-2 control-label" %>
+    <div class="col-sm-5">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :bio, class: "col-sm-2 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_area :bio, class: "form-control bio-box", size:"3x5" %>
+    </div>
+  </div>
+  <div class="row">
+  <%= f.submit "Save", class: "center-block" %>
+  </div>
+<% end %>
