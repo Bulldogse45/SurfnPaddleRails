@@ -15,14 +15,18 @@
 
 
 <%= form_for @post, html: {class: "form-horizontal"} do |f| %>
-  <div class="row">
-    <%= f.label :title, class: "col-xs-2 col-xs-offset-1" %>
-    <%= f.text_field :title, class: "col-xs-2" %>
+<div class="form-group">
+  <%= f.label :title, class: "col-sm-2 control-label" %>
+  <div class="col-sm-5">
+    <%= f.text_field :title, class: "form-control" %>
   </div>
-  <div class="row">
-    <%= f.label :body, class: "col-xs-2 col-xs-offset-1" %>
-    <%= f.text_area :body, class: "col-xs-8", size:"3x15" %>
+</div>
+<div class="form-group">
+  <%= f.label :body, class: "col-sm-2 control-label" %>
+  <div class="col-sm-8">
+    <%= f.text_area :body, class: "form-control bio-box", size:"3x5" %>
   </div>
+</div>
   <div class="row">
     <%= f.label :author_id, class: "col-xs-2 col-xs-offset-1" %>
     <%= collection_select(:post, :author_id, Author.all, :id, :name, prompt: true) %>

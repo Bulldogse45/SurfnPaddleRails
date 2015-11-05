@@ -1,7 +1,21 @@
 <div class="container">
-  <h1 class="text-center"><%= @author.name %></h1>
+  <div class="text-center">
+    <h1><%= @author.name %></h1> <%= link_to "EDIT", edit_author_path(id:@author.id) %>
+  </div>
     <%= image_tag @author.auth_image, class:"img-responsive auth_image center-block" %>
   <div class="col-xs-8 col-xs-offset-2">
     <p><%= @author.bio %></p>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="text-center">Posts</h4>
+    </div>
+    <div class="col-xs-8 col-xs-offset-2">
+      <ul>
+        <% @author.posts.each do |p| %>
+        <li><%= link_to p.title, p %>   <%= p.created_at %> </li>
+        <% end %>
+      </ul>
+    </DIV>
   </div>
 </div>
