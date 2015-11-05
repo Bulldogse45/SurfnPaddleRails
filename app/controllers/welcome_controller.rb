@@ -16,16 +16,22 @@ class WelcomeController < ApplicationController
   end
   def create
 
-    post = Post.new(post_params)
-    post.update_attribute(:author_id,6)
-    post.save
-    redirect_to root_path
+    @post = Post.new(post_params)
+    @post.update_attribute(:author_id,6)
+    if @post.save
+      @other_posts = Post.all
+      redirect_to root_path
+    else
+      @other_posts = Post.all
+      render "new"
+    end
   end
   def update
     @post = Post.find(params['id'])
     if @post.update(post_params)
       redirect_to @post
     else
+      @other_posts = Post.all
       render "new"
     end
   end
