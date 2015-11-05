@@ -2,17 +2,19 @@
   <div class="col-xs-1"></div>
   <div class="col-md-7 col-lg-7 col-sm-12 main-content">
     <div class="row">
-      <h1 class="headline"><%= @post_info.title %></h1>
+      <h1 class="headline"><%= @post.title %></h1>
       <div class="row">
         <div class="col-xs-1">
-          <%= image_tag @post_info.author.auth_image, :class => "img-circle center-block author-pic" %>
+          <%= image_tag @post.author.auth_image, :class => "img-circle center-block author-pic" %>
         </div>
-        <div class="col-xs-10 col-xs-offset-1 text-left">
-          <p><a href="#"><%= @post_info.author.name %></a> on <%= @post_info.created_at %></p>
+        <div class="col-xs-9 col-sm-7 text-left">
+          <p><a href="#"><%= @post.author.name %></a> on <%= @post.created_at.to_date.to_formatted_s(:long_ordinal) %></p>
         </div>
+        <div class="col-xs-12 col-sm-2 text-center"><%= link_to "Edit Post", edit_post_path(id:@post.id) %></div>
+        <div class="col-xs-12 col-sm-2 text-center"><%= link_to "Delete Post", delete_post_path(id:@post.id) %></div>
       </div>
-      <%= simple_format(@post_info.body) %>
-      <%= image_tag @post_info.post_image, :class => "center-block post-image" %>
+      <%= simple_format(@post.body) %>
+      <%= image_tag @post.post_image, :class => "center-block post-image" %>
     </div>
     <div class="row">
       <div class="col-xs-12 article-options">
@@ -45,8 +47,8 @@
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12 sidebar">
     <div class="row">
-      <%= image_tag @post_info.author.auth_image,  :class => "img-circle center-block profile-pic" %>
-      <h3 class="text-center profile"><%= @post_info.author.name %></h3>
+      <%= image_tag @post.author.auth_image,  :class => "img-circle center-block profile-pic" %>
+      <h3 class="text-center profile"><%= @post.author.name %></h3>
       <div class="col-xs-1"></div>
       <div class="col-xs-3 social-profile text-center"><a>Twitter</a>
       </div>

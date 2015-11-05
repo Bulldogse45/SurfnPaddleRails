@@ -28,7 +28,7 @@
           <% end %>
         </div>
         <div class="col-xs-5 logo hidden-xs"></div>
-        <div class="col-md-3 col-sm-12">
+        <div class="col-md-4 col-md-offset-3 col-sm-12">
           <ul class="nav nav-pills text-center">
             <li role="presentation"><%= link_to "ABOUT", about_path %></li>
             <li role="presentation">
@@ -36,6 +36,7 @@
               SEARCH <span class="glyphicon glyphicon-search white"></span>
             <% end %>
             </li>
+            <li role="presentation"><%= link_to "NEW POST", new_post_path %></li>
           </div>
         </ul>
       </div>
@@ -62,7 +63,7 @@
   <div class="container-fluid other-products">
     <% i=1 %>
     <% @other_posts.sort_by{|p| p.created_at.to_f}.reverse.take(4).each do |p| %>
-      <%= link_to posts_path(:id => p.id) do%>
+      <%= link_to post_path(:id => p.id) do%>
         <div class="col-lg-3 col-md-3 col-sm-12  product<%= i %>">
           <div class="col-lg-3 col-md-3 col-sm-12  overlay">
             <h3><%= p.title %></h3>
