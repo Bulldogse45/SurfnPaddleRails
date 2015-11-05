@@ -1,6 +1,7 @@
 <div class="container">
   <div class="text-center">
-    <h1><%= @author.name %></h1> <%= link_to "EDIT", edit_author_path(id:@author.id) %>
+    <h1><%= @author.name %></h1>
+    <%= link_to "EDIT", edit_author_path(id:@author.id) %>
   </div>
     <%= image_tag @author.auth_image, class:"img-responsive auth_image center-block" %>
   <div class="col-xs-8 col-xs-offset-2">
