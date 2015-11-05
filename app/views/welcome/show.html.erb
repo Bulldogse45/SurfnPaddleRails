@@ -8,7 +8,7 @@
           <%= image_tag @post.author.auth_image, :class => "img-circle center-block author-pic" %>
         </div>
         <div class="col-xs-9 col-sm-7 text-left">
-          <p><a href="#"><%= @post.author.name %></a> on <%= @post.created_at.to_date.to_formatted_s(:long_ordinal) %></p>
+          <p><%= link_to @post.author.name, author_path(@post.author.id) %></a> on <%= @post.created_at.to_date.to_formatted_s(:long_ordinal) %></p>
         </div>
         <div class="col-xs-12 col-sm-2 text-center"><%= link_to "Edit Post", edit_post_path(id:@post.id) %></div>
         <div class="col-xs-12 col-sm-2 text-center"><%= link_to "Delete Post", delete_post_path(id:@post.id) %></div>
